@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Datos_MasisaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Transacciones">
+          <Key>
+            <PropertyRef Name="Id_Transacciones" />
+          </Key>
+          <Property Name="Id_Transacciones" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Carga ID" Type="varchar" MaxLength="50" />
+          <Property Name="Archivo" Type="varchar" MaxLength="50" />
+          <Property Name="Pais" Type="varchar" MaxLength="50" />
+          <Property Name="PLC ID" Type="varchar" MaxLength="50" />
+          <Property Name="Suc ID" Type="varchar" MaxLength="50" />
+          <Property Name="Beneficiario ID" Type="varchar" MaxLength="50" />
+          <Property Name="PLC Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Suc Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Codigo PLC" Type="varchar" MaxLength="10" />
+          <Property Name="Codigo Suc" Type="varchar" MaxLength="10" />
+          <Property Name="Tipo" Type="char" MaxLength="3" />
+          <Property Name="Numero" Type="char" MaxLength="10" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Grabacion" Type="datetime" />
+          <Property Name="Vendedor" Type="char" MaxLength="3" />
+          <Property Name="Nombre Vendedor" Type="varchar" MaxLength="50" />
+          <Property Name="Cliente" Type="char" MaxLength="13" />
+          <Property Name="Nombre Cliente" Type="varchar" MaxLength="50" />
+          <Property Name="Mueblista" Type="char" MaxLength="13" />
+          <Property Name="Nombre Mueblista" Type="varchar" MaxLength="50" />
+          <Property Name="Codigo" Type="char" MaxLength="13" />
+          <Property Name="Codigo Masisa" Type="char" MaxLength="13" />
+          <Property Name="Descripcion Producto" Type="varchar" MaxLength="50" />
+          <Property Name="Ud" Type="char" MaxLength="2" />
+          <Property Name="Cant" Type="float" />
+          <Property Name="P Bruto Lista" Type="float" />
+          <Property Name="P Bruto Venta" Type="float" />
+          <Property Name="V Bruto Venta" Type="float" />
+          <Property Name="Doc Origen" Type="varchar" MaxLength="20" />
+          <Property Name="Marca" Type="varchar" MaxLength="20" />
+          <Property Name="Sup Fam" Type="varchar" MaxLength="20" />
+          <Property Name="Familia" Type="varchar" MaxLength="20" />
+          <Property Name="Sub Fam" Type="varchar" MaxLength="20" />
+          <Property Name="Cat Masisa" Type="float" />
+          <Property Name="Cat Masisa 2" Type="float" />
+          <Property Name="Puntos" Type="float" />
+          <Property Name="Cartola" Type="varchar" MaxLength="50" />
+          <Property Name="Fecha Procesado" Type="datetime" />
+          <Property Name="Procesado" Type="bit" />
+          <Property Name="Estado" Type="float" />
+          <Property Name="Regla" Type="varchar" MaxLength="50" />
+          <Property Name="Fecha Creacion" Type="float" />
+          <Property Name="Rut Final" Type="varchar" MaxLength="20" />
+          <Property Name="Periodo Activo" Type="bit" />
+          <Property Name="Red M" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="Datos_MasisaModelStoreContainer">
+          <EntitySet Name="Transacciones" EntityType="Self.Transacciones" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Datos_MasisaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Transacciones">
+          <Key>
+            <PropertyRef Name="Id_Transacciones" />
+          </Key>
+          <Property Name="Id_Transacciones" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Carga_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Archivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PLC_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Suc_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Beneficiario_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PLC_Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Suc_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo_PLC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo_Suc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Numero" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Grabacion" Type="DateTime" Precision="3" />
+          <Property Name="Vendedor" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Nombre_Vendedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cliente" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="Nombre_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mueblista" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="Nombre_Mueblista" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="Codigo_Masisa" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion_Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ud" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Cant" Type="Double" />
+          <Property Name="P_Bruto_Lista" Type="Double" />
+          <Property Name="P_Bruto_Venta" Type="Double" />
+          <Property Name="V_Bruto_Venta" Type="Double" />
+          <Property Name="Doc_Origen" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Marca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Sup_Fam" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Familia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Sub_Fam" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Cat_Masisa" Type="Double" />
+          <Property Name="Cat_Masisa_2" Type="Double" />
+          <Property Name="Puntos" Type="Double" />
+          <Property Name="Cartola" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Procesado" Type="DateTime" Precision="3" />
+          <Property Name="Procesado" Type="Boolean" />
+          <Property Name="Estado" Type="Double" />
+          <Property Name="Regla" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Creacion" Type="Double" />
+          <Property Name="Rut_Final" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Periodo_Activo" Type="Boolean" />
+          <Property Name="Red_M" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="Datos_MasisaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Transacciones" EntityType="Self.Transacciones" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Datos_MasisaModelStoreContainer" CdmEntityContainer="Datos_MasisaEntities">
+          <EntitySetMapping Name="Transacciones">
+            <EntityTypeMapping TypeName="Datos_MasisaModel.Transacciones">
+              <MappingFragment StoreEntitySet="Transacciones">
+                <ScalarProperty Name="Id_Transacciones" ColumnName="Id_Transacciones" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Carga_ID" ColumnName="Carga ID" />
+                <ScalarProperty Name="Archivo" ColumnName="Archivo" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="PLC_ID" ColumnName="PLC ID" />
+                <ScalarProperty Name="Suc_ID" ColumnName="Suc ID" />
+                <ScalarProperty Name="Beneficiario_ID" ColumnName="Beneficiario ID" />
+                <ScalarProperty Name="PLC_Nombre" ColumnName="PLC Nombre" />
+                <ScalarProperty Name="Suc_Nombre" ColumnName="Suc Nombre" />
+                <ScalarProperty Name="Codigo_PLC" ColumnName="Codigo PLC" />
+                <ScalarProperty Name="Codigo_Suc" ColumnName="Codigo Suc" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Grabacion" ColumnName="Grabacion" />
+                <ScalarProperty Name="Vendedor" ColumnName="Vendedor" />
+                <ScalarProperty Name="Nombre_Vendedor" ColumnName="Nombre Vendedor" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre Cliente" />
+                <ScalarProperty Name="Mueblista" ColumnName="Mueblista" />
+                <ScalarProperty Name="Nombre_Mueblista" ColumnName="Nombre Mueblista" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Codigo_Masisa" ColumnName="Codigo Masisa" />
+                <ScalarProperty Name="Descripcion_Producto" ColumnName="Descripcion Producto" />
+                <ScalarProperty Name="Ud" ColumnName="Ud" />
+                <ScalarProperty Name="Cant" ColumnName="Cant" />
+                <ScalarProperty Name="P_Bruto_Lista" ColumnName="P Bruto Lista" />
+                <ScalarProperty Name="P_Bruto_Venta" ColumnName="P Bruto Venta" />
+                <ScalarProperty Name="V_Bruto_Venta" ColumnName="V Bruto Venta" />
+                <ScalarProperty Name="Doc_Origen" ColumnName="Doc Origen" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Sup_Fam" ColumnName="Sup Fam" />
+                <ScalarProperty Name="Familia" ColumnName="Familia" />
+                <ScalarProperty Name="Sub_Fam" ColumnName="Sub Fam" />
+                <ScalarProperty Name="Cat_Masisa" ColumnName="Cat Masisa" />
+                <ScalarProperty Name="Cat_Masisa_2" ColumnName="Cat Masisa 2" />
+                <ScalarProperty Name="Puntos" ColumnName="Puntos" />
+                <ScalarProperty Name="Cartola" ColumnName="Cartola" />
+                <ScalarProperty Name="Fecha_Procesado" ColumnName="Fecha Procesado" />
+                <ScalarProperty Name="Procesado" ColumnName="Procesado" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Regla" ColumnName="Regla" />
+                <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha Creacion" />
+                <ScalarProperty Name="Rut_Final" ColumnName="Rut Final" />
+                <ScalarProperty Name="Periodo_Activo" ColumnName="Periodo Activo" />
+                <ScalarProperty Name="Red_M" ColumnName="Red M" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
