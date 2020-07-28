@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.Lev_Masisa.WF.Frm_Importar_Compras_SII
+            Me.MainForm = Global.Lev_Masisa.WF.Form1
         End Sub
     End Class
 End Namespace

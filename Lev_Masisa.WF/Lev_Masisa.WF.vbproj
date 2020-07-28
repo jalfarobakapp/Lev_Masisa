@@ -132,6 +132,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\Clases\Cl_Levantar_Tablas.vb" />
     <Compile Include="Formularios\Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -139,10 +140,10 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Frm_Importar_Compras_SII.designer.vb">
-      <DependentUpon>Frm_Importar_Compras_SII.vb</DependentUpon>
+    <Compile Include="Formularios\Frm_Levantar_Tablas.designer.vb">
+      <DependentUpon>Frm_Levantar_Tablas.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Frm_Importar_Compras_SII.vb">
+    <Compile Include="Formularios\Frm_Levantar_Tablas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Funciones\Class_Importar_Excel.vb" />
@@ -193,8 +194,8 @@
     <EmbeddedResource Include="Formularios\Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Frm_Importar_Compras_SII.resx">
-      <DependentUpon>Frm_Importar_Compras_SII.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\Frm_Levantar_Tablas.resx">
+      <DependentUpon>Frm_Levantar_Tablas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

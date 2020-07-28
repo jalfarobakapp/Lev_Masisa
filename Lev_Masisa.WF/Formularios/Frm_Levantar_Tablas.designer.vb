@@ -1,5 +1,5 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Frm_Importar_Compras_SII
+Partial Class Frm_Levantar_Tablas
     Inherits DevComponents.DotNetBar.Metro.MetroForm
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class Frm_Importar_Compras_SII
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Importar_Compras_SII))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Levantar_Tablas))
         Me.Grupo_01 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Chk_Primera_Fila_Es_encabezado = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.Lbl_Procesando = New DevComponents.DotNetBar.LabelX()
@@ -31,10 +31,10 @@ Partial Class Frm_Importar_Compras_SII
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Circular_Progres_Val = New DevComponents.DotNetBar.Controls.CircularProgress()
         Me.Bar1 = New DevComponents.DotNetBar.Bar()
+        Me.Btn_Buscar_Archivo = New DevComponents.DotNetBar.ButtonItem()
         Me.Btn_Importar_Desde_XML = New DevComponents.DotNetBar.ButtonItem()
         Me.Btn_Archivo_Ayuda_Excel = New DevComponents.DotNetBar.ButtonItem()
         Me.Btn_Cancelar = New DevComponents.DotNetBar.ButtonItem()
-        Me.Btn_Buscar_Archivo = New DevComponents.DotNetBar.ButtonItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Grupo_01.SuspendLayout()
         CType(Me.Bar1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -193,6 +193,15 @@ Partial Class Frm_Importar_Compras_SII
         Me.Bar1.TabStop = False
         Me.Bar1.Text = "Bar1"
         '
+        'Btn_Buscar_Archivo
+        '
+        Me.Btn_Buscar_Archivo.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+        Me.Btn_Buscar_Archivo.ForeColor = System.Drawing.Color.Black
+        Me.Btn_Buscar_Archivo.Image = CType(resources.GetObject("Btn_Buscar_Archivo.Image"), System.Drawing.Image)
+        Me.Btn_Buscar_Archivo.Name = "Btn_Buscar_Archivo"
+        Me.Btn_Buscar_Archivo.Text = "Importar archivo"
+        Me.Btn_Buscar_Archivo.Tooltip = "Buscar Archivo"
+        '
         'Btn_Importar_Desde_XML
         '
         Me.Btn_Importar_Desde_XML.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
@@ -219,15 +228,6 @@ Partial Class Frm_Importar_Compras_SII
         Me.Btn_Cancelar.Text = "Cancelar"
         Me.Btn_Cancelar.Tooltip = "Eliminar Servidor de correo de salida SMTP"
         '
-        'Btn_Buscar_Archivo
-        '
-        Me.Btn_Buscar_Archivo.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
-        Me.Btn_Buscar_Archivo.ForeColor = System.Drawing.Color.Black
-        Me.Btn_Buscar_Archivo.Image = CType(resources.GetObject("Btn_Buscar_Archivo.Image"), System.Drawing.Image)
-        Me.Btn_Buscar_Archivo.Name = "Btn_Buscar_Archivo"
-        Me.Btn_Buscar_Archivo.Text = "Importar archivo"
-        Me.Btn_Buscar_Archivo.Tooltip = "Buscar Archivo"
-        '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
@@ -241,6 +241,7 @@ Partial Class Frm_Importar_Compras_SII
         Me.Controls.Add(Me.Bar1)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ForeColor = System.Drawing.Color.Black
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True

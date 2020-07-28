@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9101a4ee34804ee3bd6781fa37a16c40" Name="Diagram1">
+      <Diagram DiagramId="9101a4ee34804ee3bd6781fa37a16c40" Name="Diagram1" ZoomLevel="70">
         <EntityTypeShape EntityType="Datos_MasisaModel.Transacciones" Width="1.5" PointX="2.125" PointY="0.5" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>

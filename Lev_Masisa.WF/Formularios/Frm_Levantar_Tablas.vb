@@ -1,7 +1,7 @@
 Imports System.IO
 Imports DevComponents.DotNetBar
 
-Public Class Frm_Importar_Compras_SII
+Public Class Frm_Levantar_Tablas
 
     Dim _Sql As New Class_SQL(Cadena_ConexionSQL_Server)
     Dim Consulta_Sql As String
@@ -30,15 +30,12 @@ Public Class Frm_Importar_Compras_SII
         End Get
     End Property
 
-    Public Sub New(ByVal Periodo As Integer, ByVal Mes As Integer)
+    Public Sub New()
 
         ' Llamada necesaria para el Diseñador de Windows Forms.
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-
-        _Periodo = Periodo
-        _Mes = Mes
 
     End Sub
 
@@ -74,7 +71,7 @@ Public Class Frm_Importar_Compras_SII
     End Sub
 
     Private Sub Btn_Cancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Cancelar.Click
-        If MessageBoxEx.Show(Me, "¿Esta seguro cancelar la acción?", "Cancelar", _
+        If MessageBoxEx.Show(Me, "¿Esta seguro cancelar la acción?", "Cancelar",
                             MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
 
             _Cancelar = True
@@ -83,6 +80,11 @@ Public Class Frm_Importar_Compras_SII
     End Sub
 
     Private Sub Btn_Buscar_Archivo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Buscar_Archivo.Click
+
+        Dim _Cl_Levantar_Tablas As New Cl_Levantar_Tablas
+
+        Dim _Archivo = _Cl_Levantar_Tablas.Sb_Importar_Archivo_Excel(Me)
+        _Cl_Levantar_Tablas.Fx_Importar_Tabla_Transacciones(_Archivo, Chk_Primera_Fila_Es_encabezado.Checked, Txt_Nombre_Archivo.Text, Circular_Progres_Porc, Circular_Progres_Val)
 
         Sb_Importar_Archivo_Excel()
 
@@ -125,7 +127,7 @@ Public Class Frm_Importar_Compras_SII
         Dim _Arreglo = _ImpEx.Importar_Excel_Array(_Ubic_Archivo, _Extencion, 0)
         Dim _Filas = _Arreglo.GetUpperBound(0)
 
-        Dim _Arreglo_Cd(_Filas) As String
+        'Dim _Arreglo_Cd(_Filas) As String
 
         Dim _Desde = 0
 
@@ -133,9 +135,9 @@ Public Class Frm_Importar_Compras_SII
             _Desde = 1
         End If
 
-        For i = _Desde To _Filas
-            _Arreglo_Cd(i) = NuloPorNro(_Arreglo(i, 0), "")
-        Next
+        'For i = _Desde To _Filas
+        '    _Arreglo_Cd(i) = NuloPorNro(_Arreglo(i, 0), "")
+        'Next
 
 
         Dim _Problemas As Integer
@@ -415,4 +417,7 @@ Public Class Frm_Importar_Compras_SII
 
     End Sub
 
+    Private Sub Btn_Archivo_Ayuda_Excel_Click(sender As Object, e As EventArgs) Handles Btn_Archivo_Ayuda_Excel.Click
+
+    End Sub
 End Class
