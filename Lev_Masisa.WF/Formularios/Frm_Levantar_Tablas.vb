@@ -81,15 +81,19 @@ Public Class Frm_Levantar_Tablas
 
     Private Sub Btn_Buscar_Archivo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Buscar_Archivo.Click
 
+        'Dim _Motivo_Rechazo = "Existe(n) producto(s) con Stock insuficiente" & Environment.NewLine &
+        '          "Puede ser que esta validación no fue solicitada en su momento, pero al momento de reevaluar la situación nos encontramos con este problema." & vbCrLf &
+        '          "El sistema no permite grabar el documento."
+        'MessageBoxEx.Show(Me, _Motivo_Rechazo, "Validación", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+
         Dim _Cl_Levantar_Tablas As New Cl_Levantar_Tablas
 
-        Dim _Archivo = _Cl_Levantar_Tablas.Sb_Importar_Archivo_Excel(Me)
-        _Cl_Levantar_Tablas.Fx_Importar_Tabla_Transacciones(_Archivo, Chk_Primera_Fila_Es_encabezado.Checked, Txt_Nombre_Archivo.Text, Circular_Progres_Porc, Circular_Progres_Val)
+        Dim _Archivo = _Cl_Levantar_Tablas.Sb_Importar_Archivo_Excel(Me, Circular_Progres_Val)
+        _Cl_Levantar_Tablas.Fx_Importar_Tabla_Transacciones(_Archivo,
+                                                            Chk_Primera_Fila_Es_encabezado.Checked,
+                                                            Txt_Nombre_Archivo.Text,
+                                                            Circular_Progres_Porc, Circular_Progres_Val)
 
-        Sb_Importar_Archivo_Excel()
-
-        'Consulta_sql = "Select * From " & _Global_BaseBk & "Zw_Compras_en_SII"
-        '_TblInforme = _Sql.Fx_Get_Tablas(Consulta_sql)
 
     End Sub
 

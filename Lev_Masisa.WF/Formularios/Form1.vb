@@ -1,4 +1,5 @@
-﻿Public Class Form1
+﻿Imports DevComponents.DotNetBar
+Public Class Form1
     Public Sub New()
 
         ' Esta llamada es exigida por el diseñador.
@@ -14,6 +15,10 @@
     End Sub
     Private Sub Btn_Lev_Participantes_Click(sender As Object, e As EventArgs) Handles Btn_Lev_Participantes.Click
 
+        Dim _Motivo_Rechazo = "Existe(n) producto(s) con Stock insuficiente" & Environment.NewLine &
+                  "Puede ser que esta validación no fue solicitada en su momento, pero al momento de reevaluar la situación nos encontramos con este problema." & vbCrLf &
+                  "El sistema no permite grabar el documento."
+        MessageBoxEx.Show(Me, _Motivo_Rechazo, "Validación", MessageBoxButtons.OK, MessageBoxIcon.Stop)
 
     End Sub
 

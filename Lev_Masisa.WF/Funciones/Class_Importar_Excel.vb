@@ -1,10 +1,12 @@
 ﻿Imports Docs.Excel
+Imports DevComponents.DotNetBar.Controls
 
 Public Class Class_Importar_Excel
 
     Public Function Importar_Excel_Array(_Direccion_Archivo As String,
                                          _Extencion As String,
-                                         Optional ByVal Hoja As Integer = 0)
+                                         Optional ByVal Hoja As Integer = 0,
+                                         Optional ByRef _Barra_Progreso As Object = Nothing)
 
         ExcelWorkbook.SetLicenseCode("SA014N-E4113A-E1ALDA-101800")
         Dim Workbook As Object
@@ -25,11 +27,20 @@ Public Class Class_Importar_Excel
 
         Dim Arreglo(Filas - 1, Columnas - 1) As String
 
+        If Not IsNothing(_Barra_Progreso) Then
+            _Barra_Progreso.Maximum = Filas
+        End If
+
         For i As Integer = 1 To Filas  ' Workbook.Worksheets(0).Rows.Count
 
             For cl As Integer = 0 To Columnas - 1
                 Arreglo(i - 1, cl) = Workbook.Worksheets(Hoja).Cells(i - 1, cl).Value
             Next
+
+            If Not IsNothing(_Barra_Progreso) Then
+                _Barra_Progreso.Value += 1
+                System.Windows.Forms.Application.DoEvents()
+            End If
 
         Next i
 

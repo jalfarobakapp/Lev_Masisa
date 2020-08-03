@@ -10,7 +10,7 @@ Public Class Cl_Levantar_Tablas
 
     End Sub
 
-    Function Sb_Importar_Archivo_Excel(_Formulario As Form) As String(,) '--List(Of String)
+    Function Sb_Importar_Archivo_Excel(_Formulario As Form, _Barra_Progreso As Object) As String(,) '--List(Of String)
 
         Dim _Nombre_Archivo As String
         Dim _Ubic_Archivo As String
@@ -39,10 +39,7 @@ Public Class Cl_Levantar_Tablas
 
         Dim _ImpEx As New Class_Importar_Excel
         Dim _Extencion As String = Replace(System.IO.Path.GetExtension(_Nombre_Archivo), ".", "")
-        Dim _Arreglo = _ImpEx.Importar_Excel_Array(_Ubic_Archivo, _Extencion, 0)
-        'Dim _Filas = _Arreglo.GetUpperBound(0)
-
-        'Dim _Arreglo_Cd(_Filas) As String
+        Dim _Arreglo = _ImpEx.Importar_Excel_Array(_Ubic_Archivo, _Extencion, 0, _Barra_Progreso)
 
         Return _Arreglo
 
@@ -77,6 +74,8 @@ Public Class Cl_Levantar_Tablas
         Dim _Filas = _Arreglo.GetUpperBound(0)
 
         _Circular_Progres_Val.Maximum = _Filas
+        _Circular_Progres_Val.Value = 0
+        _Circular_Progres_Porc.Value = 0
 
         For i = _Desde To _Filas
 
@@ -101,8 +100,8 @@ Public Class Cl_Levantar_Tablas
             Dim _Codigo_Suc As String
             Dim _Tipo As String
             Dim _Numero As String
-            Dim _Fecha As String
-            Dim _Grabacion As String
+            Dim _Fecha As DateTime
+            Dim _Grabacion As DateTime
             Dim _Vendedor As String
             Dim _Nombre_Vendedor As String
             Dim _Cliente As String
@@ -140,7 +139,13 @@ Public Class Cl_Levantar_Tablas
             Try
 
                 _Id_Transacciones = NuloPorNro(_Arreglo(i, 0), "")
+
                 _Id = NuloPorNro(_Arreglo(i, 1), "")
+
+                If _Id = "2a0ef88e-a9e4-11ea-8434-005056ae2c6f" Then
+                    Dim aas = 1
+                End If
+
                 _Carga_ID = NuloPorNro(_Arreglo(i, 2), "")
                 _Archivo = NuloPorNro(_Arreglo(i, 3), "")
                 _Pais = NuloPorNro(_Arreglo(i, 4), "")
@@ -154,8 +159,8 @@ Public Class Cl_Levantar_Tablas
                 _Tipo = NuloPorNro(_Arreglo(i, 12), "")
                 _Numero = NuloPorNro(_Arreglo(i, 13), "")
 
-                _Fecha = NuloPorNro(_Arreglo(i, 14), #1/1/2000#)
-                _Grabacion = NuloPorNro(_Arreglo(i, 15), #1/1/2000#)
+                _Fecha = CDate(NuloPorNro(_Arreglo(i, 14), #1/1/2000#))
+                _Grabacion = CDate(NuloPorNro(_Arreglo(i, 15), #1/1/2000#))
 
                 _Vendedor = NuloPorNro(_Arreglo(i, 16), "")
                 _Nombre_Vendedor = NuloPorNro(_Arreglo(i, 17), "")
@@ -190,7 +195,11 @@ Public Class Cl_Levantar_Tablas
                 _Estado = NuloPorNro(_Arreglo(i, 41), 0)
                 _Regla = NuloPorNro(_Arreglo(i, 42), "")
 
-                _Fecha_Creacion = NuloPorNro(_Arreglo(i, 43), #1/1/2000#)
+                Try
+                    _Fecha_Creacion = NuloPorNro(_Arreglo(i, 43), #1/1/2000#)
+                Catch ex As Exception
+                    _Fecha_Creacion = #1/1/1900#
+                End Try
 
                 _Rut_Final = NuloPorNro(_Arreglo(i, 44), "")
                 _Periodo_Activo = NuloPorNro(_Arreglo(i, 45), 0)
@@ -204,7 +213,7 @@ Public Class Cl_Levantar_Tablas
 
             If String.IsNullOrEmpty(_Error) Then
 
-                _SqlQuery += "Insert Into Transacciones (Id, [Carga ID], Archivo, Pais, [PLC ID], [Suc ID], [Beneficiario ID], [PLC Nombre], [Suc Nombre], " &
+                _SqlQuery = "Insert Into Transacciones (Id, [Carga ID], Archivo, Pais, [PLC ID], [Suc ID], [Beneficiario ID], [PLC Nombre], [Suc Nombre], " &
                              "[Codigo PLC], [Codigo Suc], Tipo, Numero, Fecha, Grabacion, Vendedor, [Nombre Vendedor], Cliente, [Nombre Cliente], " &
                              "Mueblista, [Nombre Mueblista], Codigo, [Codigo Masisa], [Descripcion Producto], Ud, Cant, [P Bruto Lista], [P Bruto Venta], " &
                              "[V Bruto Venta], [Doc Origen], Marca, [Sup Fam], Familia, [Sub Fam], [Cat Masisa], [Cat Masisa 2], Puntos, Cartola, " &
@@ -225,6 +234,13 @@ Public Class Cl_Levantar_Tablas
                              ",'" & _Cartola & "','" & Format(_Fecha_Procesado, "yyyyMMdd") & "'," & Convert.ToInt32(_Procesado) & "," & _Estado &
                              ",'" & _Regla & "','" & Format(_Fecha_Creacion, "yyyyMMdd") &
                              "','" & _Rut_Final & "'," & Convert.ToInt32(_Periodo_Activo) & "," & Convert.ToInt32(_Red_M) & ")" & vbCrLf
+
+                If Not _Sql.Fx_Eje_Condulta_Insert_Update_Delte_TRANSACCION(_SqlQuery) Then
+
+                    Dim d = 22
+
+                End If
+
 
             Else
                 'Sb_AddToLog("Fila Nro :" & i + 1, "Problema: " & _Error & "Código: [" & _Kopr & "]", _
@@ -268,31 +284,33 @@ Public Class Cl_Levantar_Tablas
         '            vbCrLf &
         '            _SqlQuery
 
-        For Each _SqlQl As String In _SqlLotes
+        '_Contador = 1
 
-            _Sql = New Class_SQL(Cadena_ConexionSQL_Server)
+        '_Circular_Progres_Porc.Value = 0
+        '_Circular_Progres_Val.Value = 0
+        '_Circular_Progres_Val.Maximum = _SqlLotes.Count
 
-            'Dim _Cn As New SqlClient.SqlConnection
-            '_Sql.Sb_Abrir_Conexion(_Cn)
+        '_Filas = _SqlLotes.Count
 
-            _Sql.Fx_Eje_Condulta_Insert_Update_Delte_TRANSACCION(_SqlQl)
+        'For Each _SqlQl As String In _SqlLotes
 
-        Next
+        '    _Sql = New Class_SQL(Cadena_ConexionSQL_Server)
+        '    System.Windows.Forms.Application.DoEvents()
+        '    'Dim _Cn As New SqlClient.SqlConnection
+        '    '_Sql.Sb_Abrir_Conexion(_Cn)
 
+        '    _Leyenda = "Insertando datos por paquetes de tranasacción SQL a la base. Paquete " & _Contador & " de " & FormatNumber(_Filas, 0)
 
+        '    _Sql.Fx_Eje_Condulta_Insert_Update_Delte_TRANSACCION(_SqlQl)
 
-        'Consulta_Sql = "Update " & _Global_BaseBk & "Zw_Compras_en_SII Set" & vbCrLf &
-        '               "Monto_Exento = Monto_Exento*-1," & vbCrLf &
-        '               "Monto_Neto = Monto_Neto*-1," & vbCrLf &
-        '               "Monto_Iva_Recuperable = Monto_Iva_Recuperable *-1," & vbCrLf &
-        '               "Monto_Iva_No_Recuperable = Monto_Iva_No_Recuperable *-1," & vbCrLf &
-        '               "Monto_Total = Monto_Total*-1," & vbCrLf &
-        '               "Valor_Otro_impuesto = Valor_Otro_impuesto*-1," & vbCrLf &
-        '               "Vanedo = Vanedo*-1," & vbCrLf &
-        '               "Vaivdo = Vaivdo*-1," & vbCrLf &
-        '               "Vabrdo = Vabrdo*-1" & vbCrLf &
-        '               "Where Periodo = " & _Periodo & " And Mes = " & _Mes & " And Tido = 'NCC'"
-        '_Sql.Ej_consulta_IDU(Consulta_Sql)
+        '    _Contador += 1
+        '    _Circular_Progres_Porc.Value = ((_Contador * 100) / _Filas)
+        '    _Circular_Progres_Val.Value += 1
+        '    _Circular_Progres_Val.ProgressText = _Circular_Progres_Val.Value
+
+        'Next
+
+        Return True
 
     End Function
 
